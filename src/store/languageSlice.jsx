@@ -3,7 +3,7 @@ import { createSlice } from "@reduxjs/toolkit";
 const languageSlice = createSlice({
   name: "language",
   initialState: {
-    lang: "tr",
+    lang:localStorage.getItem("language") || "tr",
     data: null,
     loading: false,
   },
@@ -13,9 +13,11 @@ const languageSlice = createSlice({
     },
     setLanguageData: (state, action) => {
       state.data = action.payload;
+      localStorage.setItem("language",state.lang)
     },
     setLoading: (state, action) => {
       state.loading = action.payload;
+       localStorage.setItem("language",state.lang)
     },
   },
 });
